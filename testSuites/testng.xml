@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <listeners>
+        <listener class-name="Riyabora.AutomateSouceDemo.TestComponents.Listeners"/>
+    </listeners>
+  <test name ="Purchase Tests" thread-count="5" >
+   <groups>
+   <run>
+   <include name="Purchase"/>
+   <include name="Smoke"/>
+   <include name="Regression"/>
+   </run>
+   </groups>
+    <classes>   
+      <class name="Riyabora.AutomateSouceDemo.Tests.SubmitOrder"/>
+      <class name="Riyabora.AutomateSouceDemo.Tests.StandAlone"/>
+      <class name="Riyabora.AutomateSouceDemo.Tests.Loginvalidation"/>
+      <class name="Riyabora.AutomateSouceDemo.Tests.CartPageValidation"/>
+      <class name="Riyabora.AutomateSouceDemo.Tests.resetAppStateValidation"/>
+      <class name="Riyabora.AutomateSouceDemo.Tests.lockedOutUserValidation"/>
+      <class name="Riyabora.AutomateSouceDemo.Tests.aboutPageNavigationValidation"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

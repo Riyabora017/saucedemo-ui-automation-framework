@@ -1,0 +1,18 @@
+[
+  {
+    "login": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    
+    "order": {
+      "firstName": "Riya",
+      "lastName": "Bora",
+      "zipCode": "201315"
+    },
+      "loginerror": {
+      "username": "wrong_user",
+      "password": "wrong_pass"
+    }
+  }
+]
