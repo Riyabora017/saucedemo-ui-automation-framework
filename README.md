@@ -23,11 +23,11 @@ It follows the Page Object Model (POM) design pattern and includes reporting, li
 - **After execution, Extent Reports will be generated in the /reports directory.**
 
 ## Key Features
-- **Hybrid framework** (TestNG + Cucumber + POM)  
+- **Hybrid framework** (TestNG + POM)  
 - **Parallel execution support**   
 - **Custom TestNG Listeners**  
 - **Config-driven execution** (config files)  
-- **Cross-browser execution support** (if applicable)  
+- **Cross-browser execution support**  
 - **Easy scalability** for new test cases  
 
 ## How to Run
