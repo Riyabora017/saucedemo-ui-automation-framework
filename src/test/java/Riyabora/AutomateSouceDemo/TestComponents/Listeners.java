@@ -16,19 +16,20 @@ import Riyabora.AutomateSouceDemo.resource.ExtentReporterNG;
 public class Listeners extends BaseTest implements ITestListener {
     ExtentTest test;
 	ExtentReports extent = ExtentReporterNG.getReportObject();
-	
+		ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
 	@Override
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub
 		ITestListener.super.onTestStart(result);
 		test=extent.createTest(result.getMethod().getMethodName());
+		extentTest.set(test);
 	}
 	
 	@Override
 	public void onTestFailure(ITestResult result) {
 		// TODO Auto-generated method stub
 		ITestListener.super.onTestFailure(result);
-		test.fail(result.getThrowable());
+        extentTest.get().fail(result.getThrowable());
 		try {
 			driver= (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
 		} catch (Exception e) {
@@ -43,8 +44,9 @@ public class Listeners extends BaseTest implements ITestListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		test.addScreenCaptureFromPath(filepath, result.getMethod().getMethodName());
-	}
+		extentTest.get().addScreenCaptureFromPath(filepath,
+		        result.getMethod().getMethodName());
+			}
 	
 	
 
@@ -76,7 +78,7 @@ public class Listeners extends BaseTest implements ITestListener {
 	public void onTestSuccess(ITestResult result) {
 		// TODO Auto-generated method stub
 		ITestListener.super.onTestSuccess(result);
-		test.log(Status.PASS, "test pass");
+		extentTest.get().log(Status.PASS, "test pass");
 	}
 
 	@Override

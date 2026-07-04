@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import Riyabora.AutomateSouceDemo.TestComponents.BaseTest;
+import Riyabora.AutomateSouceDemo.TestComponents.Retry;
 import Riyabora.AutomateSouceDemo.pageobjects.ProductCatalogue;
 
 public class Loginvalidation extends BaseTest  {
@@ -37,7 +38,7 @@ public class Loginvalidation extends BaseTest  {
 		  Assert.assertEquals(confirmlogin, "Products");
 	}
 	
-	@Test(dataProvider="getData", dataProviderClass=SubmitOrder.class,groups= {"Regression"})
+	@Test(dataProvider="getData", dataProviderClass=SubmitOrder.class,groups= {"Regression"}, retryAnalyzer=Retry.class)
 	public void failedTest(HashMap<String,Object>input){
 		Map<String,String>login =(Map<String,String>) input.get("login");
 		ProductCatalogue productCatalogue =  loginPage.loginApplication(login.get("username"),login.get("password"));
@@ -45,3 +46,4 @@ public class Loginvalidation extends BaseTest  {
 		    System.out.println(errorMessage);
 		    Assert.assertEquals(errorMessage,"Epic Username and password do not match any user in this service");
 	}}
+	
